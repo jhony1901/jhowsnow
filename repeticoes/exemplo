@@ -1,0 +1,11 @@
+#for contador in range (0, 15 , 1):
+#    print ( contador);
+
+
+number = int(0);
+
+while (number < 15):
+    print( number );
+
+    number = number + 1;
+
