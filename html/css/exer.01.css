@@ -1,0 +1,22 @@
+body{
+    background-color: black;
+    color: white;
+}
+
+.box{
+    margin-left: 30%;
+    margin-right: 30%;
+    border: 2px solid black;
+    text-align: center;
+    background-color: blue;
+    border-radius: 4%;
+}
+.Epname {
+        font-weight: 10;
+
+}
+img {
+    border-radius: 8px;
+    height: 70%;
+    width: 60%;
+}
