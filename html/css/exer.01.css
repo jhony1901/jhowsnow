@@ -7,7 +7,7 @@ body{
     margin-left: 30%;
     margin-right: 30%;
     border: 2px solid black;
-    text-align: center;
+    text-decoration: solid;
     background-color: blue;
     border-radius: 4%;
 }
