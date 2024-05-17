@@ -1,0 +1,31 @@
+
+th,td,table{
+    border: 2px solid black;
+
+}
+table{
+    border-collapse:collapse;
+    
+}   
+table{
+    margin-left: 30%;
+    margin-right: 30%;
+    background-color: rgb(212, 212, 212);
+    text-align: center;
+    height: 90%;
+    margin-top: 1%;
+    width: 30%
+   
+}
+body{
+    background-color: beige;
+    background-image: url(home-banner-novidades-oktober-1920x920.jpg);
+
+}
+.titulo{
+    margin-left: 40%;
+    font-weight: bold;
+    font-size: 28px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   color: white;
+}
