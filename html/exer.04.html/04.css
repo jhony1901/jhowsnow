@@ -1,0 +1,38 @@
+body{
+    margin-left: 30%;
+    margin-right: 30%;
+    border-collapse: collapse;
+    margin-top: 20%;
+    background-color: brown;
+    text-align: center;
+    background-image:url(image/R\ \(1\).jfif);
+    border-color: black;
+}
+.title{
+    font-size: 50px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    color: brown;
+    text-align:start;
+}
+.titulo{
+    font-size: 20px;
+    color: brown;
+    font-size: 50px;
+}
+
+.senha{
+    font-size: 20px;
+}
+.epsenha{
+    border-radius: 2%;
+    border-color: brown; 
+}
+.epbutom{
+    border-radius: 2%;
+    border-color: brown;
+}
+.email{
+    border-radius: 2%;
+    border-color:brown;
+}
