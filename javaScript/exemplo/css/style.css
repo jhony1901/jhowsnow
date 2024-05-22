@@ -1,0 +1,31 @@
+body {
+    background-color: rgba(129, 117, 2, 0.699);
+    color: white;
+}
+
+.container {
+    background-color: rgba(143, 143, 143, 0.767);
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 10%;
+    text-align: center;
+    padding: 3%;
+}
+
+input {
+    margin-top: 2%;
+    width: 80%;
+    border-radius: 8px;
+    height: 5%;
+    border: 1px solid rgba(128, 128, 128, 0.404);
+}
+
+.btnEnviar {
+    background-color: rgb(255, 224, 194);
+    color: black;
+}
+
+.btnEnviar:hover {
+    background-color: rgb(135, 223, 132);
+    color: black;
+}
