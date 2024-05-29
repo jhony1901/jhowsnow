@@ -1,33 +1,34 @@
-<html>
 
-<head>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
 
 <body>
+    <head>
+        <link rel="stylesheet" href="../css/style.css">
+    </head>
     <div class="container">
-        <div class="container">
-            <h2> Bem Vindo ao Jogo da Adivinhação
+
+        <!-- tags para texto explicando as regras do jogo: a , p , h1 , h2 -->
+
+        <!-- Botões para a seleção de dificuldade -->
+
+        <h2> Bem Vindos ao Jogo da Adivinhação </h2>
+
+        <p> Nosso jogo possui algumas regras. . . recomendo ler com atenção. </p>
+
+        <div class="showRules"> Exibir regras do jogo </div>
+
+        <div class="rules">
+            <p> Primeiro: Um número aleatório será gerado a partir da dificuldade selecionada. </p>
+            <p> Segundo: O jogador receberá até 5 dicas em cada partida. </p>
+            <p> Terceiro: O jogador terá 4 tentativas de adivinhar o número. </p>
         </div>
+        
+        <input class="btnStyle" id="easy" type="button" value="Fácil" onclick="startGame('easy')" /><br>
+        <input class="btnStyle" id="medium" type="button" value="Médio" onclick="startGame('med')" /><br>
+        <input class="btnStyle" id="hard" type="button" value="Difícil" onclick="startGame('hard')" />
 
-        <p>Nosso Jogo Possui algumas regras. . . recomendo ler com atenção.</p>
-
-        <div class="showRules">Exibir regras do Jogo</div>
-
-        <div class="Rules">
-            <p>Regras do Jogo!!!</p>
-            <p>No modo Facil você tera numeros entre 1 a 30 e 4 tentaivas.</p>
-            <p>No modo Médio você tera numeros entre 1 a 50 e 4 tentativas.</p>
-            <p>No modo Dicífil voce tera numeros entre 1 a 100 e 4 tentativas.</p>       
-        </div>
-        <input id ="easy" type ="button" value="Facil"/>
-        <br>
-        <input id ="medium"type="button" value="Médio"/>
-        <br>
-        <input id ="Hard" type="button" value="Dicífil"/>
-    
     </div>
-    <script src="../scrip/navigatio.js"></script>
+
+    <script src="../script/navigation.js"></script>
 </body>
 
 </html>
