@@ -81,6 +81,53 @@ while( True ):
 
         except:
             print('Something went wrong');
+    if ( inputMenu == 4 ):
+        inputSubMenu = int(0);
+
+        print('\nMenu de atualização.');
+        print('Digite 1 para atualizar o nome.');
+        print('Digite 2 para atualizar o preço.');
+        print('Digite 3 para atualizar a quantidade.');
+        try:
+            inputSubMenu = int(input('Digite: '));
+            if (inputSubMenu == 2):
+                name = str('')
+                price = float(0);
+                print('\n atualizar o preço de um produto.');
+                name = input('nome do produto:');
+                price = float(input('Novo preço:'));
+        
+                data = produtos.updatePrice(name ,price);
+        
+                print(f'\n{data['message']}');
+
+                
+
+            if (inputSubMenu == 3 ):
+                name = str('');
+                Quantity = int(0);
+                print('\nAtualizar a Quantidade dos produtos.')
+                name = input('nome do produto: ');
+                Quantity =int(input('nova quantidade: '));
+    
+                data = produtos.updateQuantity(name , Quantity);
+    
+                print(f'\n{data["message"]}');
+     
+
+            if(inputSubMenu == 1 ):
+                oldName= str('');
+                newName =str('');
+                print('\nAtualizar o nome ')
+                oldName = input('Nome atual: ')
+                newName =  input('Novo nome: ')
+
+                data = produtos.
+        except:
+            print('something went wrong');
+        
+
+
 
     #delete
     if (inputMenu == 5):
