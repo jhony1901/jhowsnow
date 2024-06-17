@@ -83,27 +83,37 @@ def updateQuantity(name:str , Quantity:int):
             return{'code': 404, 'message': 'product not found'};
     
         id = Product[0];
+
+       
+
         cursor.execute('UPDATE  Products SET quantity=?  WHERE id =?',(Quantity,id));
         connection.commit();
         return{'code': 202, 'message': 'Product update successfully'}    
 
     except:
         return{'code': 500 , 'message': 'internal error'};
-def updateName (name:str):
+def updateName (oldName:str , newName:str):
     try:
-        cursor.execute('SELECT id from Products WHERE name =?',(name,));
+        cursor.execute('SELECT id from Products WHERE name =?',(oldName,));
         Product = cursor.fetchone();
 
         if(Product == None):
             return{'code': 404, 'message': 'product not found'};
 
         id = Product[0];
-        cursor.execute('UPDATE  Products SET name=?  WHERE id =?',(name,id));
+
+        ProductByname = findByName(newName) ;
+        
+        if (ProductByname ['code']== 200):
+            return {'code': 400,'messag': 'Product name already exist'};
+    
+        cursor.execute('UPDATE  Products SET name=?  WHERE id =?',(newName,id));
         connection.commit();
+
         return{'code': 202, 'message': 'Product update successfully'}     
     except:
          return{'code': 500 , 'message': 'internal error'};
-def delete(name:str):
+def delete(name):
     try:
         id = 0;
 
@@ -112,6 +122,7 @@ def delete(name:str):
 
         if(product == None):
             return{'code': 404, 'message': 'product not found'};
+    
     
         id = product[0];
         cursor.execute('DELETE FROM Products WHERE id =?',(id,));
