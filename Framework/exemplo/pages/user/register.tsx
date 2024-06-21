@@ -3,16 +3,28 @@ import Head from 'next/head';
 
 export default function registerpage() {
         return(
-            <main className='flex min-h-screen flex-col'>
+            <main id={Style.main} className='flex min-h-screen flex-col'>
                 <Head>
                     <title>cadastro</title>
                 </Head>
 
-                <div className={Style.container}>
-                    <input type="text" />
-                    <input type="email" name="" id="" />
+                <form className={Style.container}>
+                    <div>  
+                    <h2>Criar conta</h2>
+                     
+                    <input type="text" placeholder='user name'/>
+                    <br /><br />
+                    <input type="password" placeholder='senha'/>
+                    <br /> <br />
+                    <input type="password" placeholder='confirmar senha'/>
+                    <br /><br />
+                    <input type="email"placeholder='email'/>
+
+                    <br /><br />
+                    <input className={Style.button} type="submit" value='enviar' />
                     
-                </div>
+                    </div>
+                </form>
             </main>
         );
 }
