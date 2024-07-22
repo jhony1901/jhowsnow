@@ -1,0 +1,27 @@
+.container{
+    margin-left: 5%;
+    margin-right: 5%;
+    border-radius: 10px;
+    padding: 20%;
+    margin-top: 1px;
+    border: 1px solid gray;
+    background-color: black;
+    background-image: url('/cinema.webp');
+    background-size: cover;
+}
+.Nome{
+   border-radius: 2px;
+   font-size: 30px;
+   
+}
+.password{
+    border-radius: 2px;
+    font-size: 30px;
+
+}
+.button:hover{
+    background-color: rgb(28, 5, 230);
+    cursor: pointer;
+    border: 2px solid white;
+    
+}
