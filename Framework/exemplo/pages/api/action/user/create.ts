@@ -3,7 +3,7 @@ import {createUser} from "../../controller/Usercontroller";
 
 export default async ( req : NextApiRequest, res : NextApiResponse) =>{
 
-    if (req.method != 'Post'){
+    if (req.method != 'POST'){
         return res.status(403).json({message : 'method not allowed'});
     }
     
@@ -11,9 +11,5 @@ export default async ( req : NextApiRequest, res : NextApiResponse) =>{
 
     const response : any = await createUser(username , password ,confirmpassword ,cpf ,name );
 
-    if ( response.message != undefined){
-        return res.status(403).json(response);
-    }
-    else
-       return res.status(201).json(response);
+    return res.status( response.status).json( response.message);
 }
