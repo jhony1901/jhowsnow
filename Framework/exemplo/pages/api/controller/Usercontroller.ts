@@ -1,4 +1,7 @@
-import {createrusermodel , findusermodelbycpf, findusermodelbyusername}  from "../model/user";
+import { start } from "repl";
+import {createrusermodel , findusermodelbycpf, findusermodelbyusername , findusermodelbylogin}  from "../model/user";
+import {generatetoken} from '@/services/tokenConfig'
+
 
 export async function createUser(_username:string , _password:string , _confirmPassword:string , _cpf:string , _name = "") {
     // Realizar verificações em atributos Únicos das tabelas.
@@ -27,5 +30,28 @@ export async function createUser(_username:string , _password:string , _confirmP
     }
     catch(err) {
         return { status:500, message: 'Something went wrong' };
+    }
+}
+
+
+export async function login(_username: string , _password: string){
+    try{
+
+        const userlogin = await findusermodelbylogin(_username , _password);
+
+        if (userlogin == undefined){
+            return {status: 404, message: 'incorrect username or password' };
+
+
+        }
+        else {
+            const _token = generatetoken(_username)
+            return { status : 200, message :'loggin in' , token: _token}
+        }
+
+    }
+    catch(err){
+        return { status:500, message: 'Something went wrong' };
+    
     }
 }

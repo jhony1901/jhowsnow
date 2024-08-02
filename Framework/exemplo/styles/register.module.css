@@ -24,3 +24,9 @@
     background-color: rgb(207, 211, 211);
     cursor: pointer;
 }
+#main{
+    background-image: url('/cinema.jpg');
+    background-size: cover;
+    margin-left: 5%;
+    margin-right: 5%;
+}

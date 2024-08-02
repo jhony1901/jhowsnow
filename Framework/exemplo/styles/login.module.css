@@ -20,8 +20,19 @@
 
 }
 .button:hover{
-    background-color: rgb(28, 5, 230);
+    background-color: rgb(239, 240, 240);
     cursor: pointer;
-    border: 2px solid white;
-    
+    border: 2px solid rgb(12, 12, 12);
+    color: rgb(14, 11, 11);
 }
+.button{
+    color: rgb(255, 255, 255);
+    background-color: rgb(1, 4, 7);
+    border: 2px;
+    border-radius: 2px;
+    font-size: 20px;
+}
+.Criarconta{
+    color: rgb(246, 247, 248);
+}
+

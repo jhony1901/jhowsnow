@@ -1,6 +1,7 @@
 import Style from '@/styles/register.module.css';
 import Head from 'next/head';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function registerpage() {
     const [formData, setFormData] = useState(
@@ -59,8 +60,7 @@ export default function registerpage() {
                     <input type="text" placeholder='cpf' onChange={(event) => { handleFormEdit(event, 'cpf') }} />
                     <br /> <br />
 
-
-
+                    <Link href={`/user/login`} >ja tenho uma conta </Link>
                     <input className={Style.button} type="submit" value='enviar' />
 
                 </div>

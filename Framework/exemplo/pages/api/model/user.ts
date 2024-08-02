@@ -33,3 +33,15 @@ export async function findusermodelbyusername (_name:string ){
     return user;
     
 }
+export async function findusermodelbylogin(_name:string, _password:string) {
+
+    const user = await prisma.user.findUnique ({
+
+            where:{
+                username: _name ,
+                password: _password
+            }
+    
+     })
+     return user
+}
