@@ -15,6 +15,6 @@ function readtoken(token){
     }
 }
 
-export function checktoken(){
+export function checktoken(token){
     return readtoken(token);
 }

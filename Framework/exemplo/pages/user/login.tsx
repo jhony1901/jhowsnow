@@ -1,11 +1,14 @@
 import style from '@/styles/login.module.css'
-import { UNSTABLE_REVALIDATE_RENAME_ERROR } from 'next/dist/lib/constants';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
+import { setCookie, getCookie } from 'cookies-next';
+import { checktoken } from '@/services/tokenConfig';
+import { useRouter } from 'next/router';
 
 
 export default function loginPage(){
+    const router = useRouter();
 
     const [ formData , setFormData ] = useState(
         {
@@ -36,11 +39,17 @@ export default function loginPage(){
 
             const responsejson = await response.json();
 
-            alert(`${response.status}\n${responsejson.message}\n${responsejson.token}`);
+            setCookie('authorization', responsejson.token);
+
+            if ( response.status != 200 ){
+                alert(`${responsejson.message}`);
+            }
+            else{
+                router.push(`/`);
+            }
+
+
         }
-
-
-
         catch(err){
             console.log(err)
         }
@@ -69,4 +78,31 @@ export default function loginPage(){
             </form>
         </main>
     );
+}
+
+
+export function getServerSideProps( {req , res }:any){
+    try{
+        const token = getCookie('authorization' , {req , res} );
+        if ( !token) {
+            throw new Error ('invaled token');
+        }
+
+        checktoken(token);
+
+        return {
+            redirect: {
+                permanent: false,
+                destination: '/',
+            },
+            props: {}
+        }
+    }
+
+    catch (err) {
+        return{
+            props: {}
+            
+        }
+    }
 }
