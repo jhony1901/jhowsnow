@@ -5,9 +5,11 @@
     margin-right: 30%;
     text-align: center;
     margin-top: 5%;
+    min-height: 70vh;
     height: 40vh;
     border: 1px solid gray;
     border-radius: 10px;
+    color: black;
 }
 
 .date{
