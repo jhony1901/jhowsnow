@@ -1,5 +1,5 @@
 
-import { createmoviemodel , findmoviemodelbyname } from "../model/movie";
+import { createmoviemodel , findmoviemodelbyname, selectMoviesModel } from "../model/movie";
 
 export async function createmovie( _name: string , _releasedate: string , _imageURL: "" , _videoURL:"" , _description :"") {
     try{
@@ -18,4 +18,15 @@ export async function createmovie( _name: string , _releasedate: string , _image
 
     }
     
+}
+
+export async function selectMovies() {
+    try{
+        const movies = await selectMoviesModel();
+
+        return{ status : 200 , message : 'select movies ', data: movies }
+    }
+    catch (err){
+        return { status:500, message: 'Something went wrong' };
+    }   
 }

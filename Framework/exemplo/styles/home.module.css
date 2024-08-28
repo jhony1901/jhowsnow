@@ -1,8 +1,8 @@
 #main {
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
-.navBar {
+.navbar {
     background-color: rgb(126, 126, 255);
     height: 15vh;
     width: 100vw;
@@ -10,21 +10,24 @@
     grid-template-columns: 20% 60% 20%;
 }
 
-.mainContainer {
+.maincontainer {
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 20% 80%;
+    overflow-x: hidden;
 }
 
-.leftContainer {
+.leftcontainer {
     background-color: rgb(157, 218, 157);
     height: 100vh;
     width: 100vw;
 }
 
-.rightContainer {
-    background-color: rgb(218, 190, 157);
+.rightcontainer {
+    background-color: rgb(233, 184, 135);
     height: 100vh;
-    width: 100vw;
+    width: 80vw;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
 }
 
 .icon {
@@ -32,18 +35,40 @@
     border-radius: 20px;
 }
 
-.searchBar {
+.searchbar {
     height: 30%;
     border-radius: 20px;
     margin-top: 3%;
 }
 
-.logoutBtn {
+.logoutbtn {
     background-color: white;
-    width: 35%;
+    width: 30%;
     height: 30%;
     border: 1px solid black;
     border-radius: 15px;
     margin-left: 10%;
     margin-top: 10%;
+
+}
+.card{
+    width: 65%;
+    height: 30vh;
+    background-color: rgb(48, 45, 45);
+    border: 1px solid black;
+    border-radius: 6px;
+    grid-template-columns: 40% 60%;
+    padding: 1%;
+    margin-top: 1.5%;
+    margin-left: 1%;
+}
+
+.cardImg{
+    max-width: 100%;
+    max-height: 34vh;
+}
+
+.cardInfos{
+    color: aliceblue;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
