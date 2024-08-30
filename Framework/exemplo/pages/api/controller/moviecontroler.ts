@@ -1,4 +1,5 @@
 
+
 import { createmoviemodel , findmoviemodelbyname, selectMoviesModel } from "../model/movie";
 
 export async function createmovie( _name: string , _releasedate: string , _imageURL: "" , _videoURL:"" , _description :"") {
@@ -29,4 +30,22 @@ export async function selectMovies() {
     catch (err){
         return { status:500, message: 'Something went wrong' };
     }   
+}
+
+export async function findmoviebyname(_name:string) {
+    try{
+        const moviebyname = await findmoviemodelbyname(_name);
+
+        if ( moviebyname == undefined) {
+            return { status: 404 , message: 'movie not found'};
+
+        }
+        else{
+            return { status:200 , message : 'movie found' , data: moviebyname}; 
+            
+        }
+    }
+    catch(err) {
+        return { status: 500 , message: 'Something went wrong'};
+    }
 }

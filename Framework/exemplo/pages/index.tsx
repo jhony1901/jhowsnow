@@ -3,8 +3,13 @@ import { getCookie } from "cookies-next";
 import { checktoken } from "@/services/tokenConfig";
 import styles from '@/styles/home.module.css';
 import { useState, useEffect } from 'react';
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Home() {
+
+  const router = useRouter();
+
   //constante para armazenar filme
   const [data, setData]: any = useState(undefined);
 
@@ -31,13 +36,22 @@ export default function Home() {
 
   }, [])
 
+  function movieClick(movieName:string){
+    router.push('/movie/' + movieName);
+  }
+
   return (
 
     <main className='flex min-h-screen flex-col'>
       <nav className={styles.navbar}>
+        <h2>Mega Links</h2>
         <img className={styles.icon} src="/cinemaicon.jfif" alt="" />
         <input className={styles.searchBar} type="text" />
-        <button className={styles.button}>logout</button>
+
+        <div>
+          <Link className={styles.Criar} href={'/movie/create'} >Criar Filme </Link>
+          <button className={styles.button}>Logout</button>
+        </div>
       </nav>
 
       <div className={styles.maincontainer}>
@@ -53,8 +67,8 @@ export default function Home() {
           {data != undefined && data instanceof Array ?
 
             data.map(movie => (
-              <div className={styles.Card}>
-                <img src="/baudamorte.jpg " alt="" className={styles.cardImg} />
+              <div onClick={() => { movieClick(movie.name) }} className={styles.Card}>
+                <img src={movie.imageURL} alt="" className={styles.cardImg} />
                 <div className={styles.Cardinfos}>
                   <h2>{movie.name}</h2>
                   <p> {movie.releasedate}</p>
