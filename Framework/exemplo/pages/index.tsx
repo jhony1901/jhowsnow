@@ -44,7 +44,6 @@ export default function Home() {
 
     <main className='flex min-h-screen flex-col'>
       <nav className={styles.navbar}>
-        <h2>Mega Links</h2>
         <img className={styles.icon} src="/cinemaicon.jfif" alt="" />
         <input className={styles.searchBar} type="text" />
 
