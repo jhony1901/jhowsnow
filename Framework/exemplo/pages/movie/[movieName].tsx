@@ -1,8 +1,55 @@
+import { checktoken } from '@/services/tokenConfig';
 import styles from '@/styles/movie.module.css'
+import { getCookie } from 'cookies-next';
 import { useState, useEffect } from 'react';
 
+
+
 export default function movie({ movieName }: any) {
-    const [ data, setData ]: any = useState();
+    const [data, setData]: any = useState();
+    const [formRating, setformRating] = useState(
+        {
+            value: 0,
+            comment: ''
+        }
+
+    );
+
+    function handleformEdit(event: any, field: string) {
+        setformRating({
+            ...formRating,
+            [field]: event.target.value
+        });
+    }
+
+    async function formSubmit() {
+        try {
+
+            const cookieAuth = getCookie('authorization')
+            const tokenInfos = checktoken(cookieAuth);
+
+            const response = await fetch(`/api/action/rating/create`, {
+                method: 'POST',
+                headers: { 'content-type': 'applicatio/json' },
+                body: JSON.stringify(
+                    {
+                        value: Number(formRating.value),
+                        comment: formRating.comment,
+                        username: tokenInfos.username
+
+                    }
+                )
+            });
+
+
+            const responseJson = await response.json();
+            alert(responseJson.message)
+
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
 
     async function fetchData() {
         try {
@@ -51,8 +98,16 @@ export default function movie({ movieName }: any) {
 
                         <iframe className={styles.video} height="350" src={'https://www.youtube.com/embed/' + data.videoURL}>
                         </iframe>
-                    </div>
 
+
+                        <form className={styles.formRating} onSubmit={formSubmit}>
+                            <h2 className={styles.nota}>Digte uma Nota (0 a 5)</h2>
+                            <input className={styles.value} type="number" onChange={(e) => { handleformEdit(e, 'value') }} /><br />
+                            <textarea className={styles.comment} placeholder="Digite seu comentario" onChange={(e) => { handleformEdit(e, 'comment') }}></textarea>
+                            <input className={styles.btnsubmit} type="submit" />
+                        </form>
+
+                    </div>
                     :
 
                     <p> Erro 404. Não encontrado</p>

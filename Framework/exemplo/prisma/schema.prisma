@@ -24,6 +24,7 @@ model user {
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
+  ratings rating[]
 }
 
 model movie{
@@ -37,7 +38,10 @@ model movie{
 
   created_at DateTime @default(now())
   update_at DateTime @updatedAt
-}
+
+   ratings rating[]
+
+} 
 
 model rating {
   id Int @id @unique @default(autoincrement())
@@ -47,4 +51,11 @@ model rating {
 
   created_at DateTime @default(now())
   update_at DateTime @updatedAt
+
+ userId Int
+ user user @relation(fields: [userId] , references: [id])
+ movieId Int 
+ movie movie @relation(fields: [movieId] , references: [id])
+
 }
+
