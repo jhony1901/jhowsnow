@@ -22,7 +22,8 @@ export default function movie({ movieName }: any) {
         });
     }
 
-    async function formSubmit() {
+    async function formSubmit(event:any) {
+        event.preventfefault()
         try {
 
             const cookieAuth = getCookie('authorization')
@@ -106,6 +107,14 @@ export default function movie({ movieName }: any) {
                             <textarea className={styles.comment} placeholder="Digite seu comentario" onChange={(e) => { handleformEdit(e, 'comment') }}></textarea>
                             <input className={styles.btnsubmit} type="submit" />
                         </form>
+
+                        <div className={styles.comments}>
+                            <div className={styles.commentCard}></div>
+                            <div className={ styles.commentInfos}>
+                                <p>nome do usuario       (5)  / 5 recomendaçao</p>
+                                <label className={styles.commentsbox}>É elogiado por seu desempenho, ergonomia e estilo, sendo considerado um computador gamer portátil de alta qualidade. Ainda assim, é uma ótima solução para quem viaja muito e busca um dispositivo potente.</label>
+                                </div>
+                        </div>
 
                     </div>
                     :

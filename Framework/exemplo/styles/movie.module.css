@@ -92,3 +92,35 @@
     border: 2px;
     border-radius: 2px;
 }
+
+.comments{
+    margin-bottom: 10%;
+    margin-left: 0.2%;
+    margin-right: 0.2%;
+    border: 1px solid white;
+    border-radius: 6px;
+    padding: 1%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    color: azure;
+
+}
+
+.commentCard{
+    border: 2px solid blueviolet;
+    border-radius: 6px;
+    padding: 1%;
+}
+
+.commentsbox{
+    border-top: 1px solid whitesmoke;
+    border-bottom: 1px solid white;
+}
+
+.commentsinfo{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding-right: 10% ;
+    font-size: 18px;
+
+}
