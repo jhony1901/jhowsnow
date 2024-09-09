@@ -1,4 +1,4 @@
-import { createRatingModel } from "../model/rating";
+import { createRatingModel , findRatingUser, updateRating } from "../model/rating";
 import { findusermodelbyusername } from "../model/user";
 import { findmoviemodelbyname } from "../model/movie";
 
@@ -14,6 +14,16 @@ export async function createRating(_value: number, _username: string, _moviename
         if (movieByname == undefined) {
             return { status: 404, message: 'Movie not found ' };
         }
+        const ratingByUser = await findRatingUser(userByUsername.id, movieByname.id);
+
+        if (ratingByUser != undefined) {
+            const updating = await updateRating(ratingByUser.id , _value, _coment);
+
+
+            return { status:200, message: 'Rating update' , data:updating};
+        }
+
+
         const response = await createRatingModel(_value, _coment, userByUsername.id, movieByname.id);
 
         return { status: 200, message: 'Rating created', data: response };

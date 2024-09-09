@@ -1,5 +1,5 @@
 
-import { getCookie } from "cookies-next";
+import { getCookie , deleteCookie } from "cookies-next";
 import { checktoken } from "@/services/tokenConfig";
 import styles from '@/styles/home.module.css';
 import { useState, useEffect } from 'react';
@@ -40,6 +40,13 @@ export default function Home() {
     router.push('/movie/' + movieName);
   }
 
+  function logOut() {
+    deleteCookie('authorization');
+
+    router.reload();
+  }
+
+
   return (
 
     <main className='flex min-h-screen flex-col'>
@@ -49,7 +56,7 @@ export default function Home() {
 
         <div>
           <Link className={styles.Criar} href={'/movie/create'} >Criar Filme </Link>
-          <button className={styles.button}>Logout</button>
+          <button onClick={logOut}className={styles.button}>Logout</button>
         </div>
       </nav>
 

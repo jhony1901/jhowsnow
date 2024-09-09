@@ -12,5 +12,5 @@ export default async ( req: NextApiRequest , res: NextApiResponse) =>{
 
     const response = await createRating(value , username , moviename , comment);
 
-    return res.status ( response.status).json( {mesage : response?.message});
+    return res.status ( response.status).json( {message : response.message});
 }

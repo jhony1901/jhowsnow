@@ -2,10 +2,13 @@ import { checktoken } from '@/services/tokenConfig';
 import styles from '@/styles/movie.module.css'
 import { getCookie } from 'cookies-next';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 
 
 export default function movie({ movieName }: any) {
+
+    const router = useRouter();
     const [data, setData]: any = useState();
     const [formRating, setformRating] = useState(
         {
@@ -22,8 +25,8 @@ export default function movie({ movieName }: any) {
         });
     }
 
-    async function formSubmit(event:any) {
-        event.preventfefault()
+    async function formSubmit(event: any) {
+        event.preventDefault()
         try {
 
             const cookieAuth = getCookie('authorization')
@@ -31,12 +34,13 @@ export default function movie({ movieName }: any) {
 
             const response = await fetch(`/api/action/rating/create`, {
                 method: 'POST',
-                headers: { 'content-type': 'applicatio/json' },
+                headers: { 'Content-type': 'application/json' },
                 body: JSON.stringify(
                     {
                         value: Number(formRating.value),
                         comment: formRating.comment,
-                        username: tokenInfos.username
+                        username: tokenInfos.username,
+                        moviename: movieName
 
                     }
                 )
@@ -44,7 +48,9 @@ export default function movie({ movieName }: any) {
 
 
             const responseJson = await response.json();
+
             alert(responseJson.message)
+            router.reload();
 
         } catch (err) {
             console.log(err)
@@ -108,12 +114,25 @@ export default function movie({ movieName }: any) {
                             <input className={styles.btnsubmit} type="submit" />
                         </form>
 
+
                         <div className={styles.comments}>
-                            <div className={styles.commentCard}></div>
-                            <div className={ styles.commentInfos}>
-                                <p>nome do usuario       (5)  / 5 recomendaçao</p>
-                                <label className={styles.commentsbox}>É elogiado por seu desempenho, ergonomia e estilo, sendo considerado um computador gamer portátil de alta qualidade. Ainda assim, é uma ótima solução para quem viaja muito e busca um dispositivo potente.</label>
-                                </div>
+                            <h1 className={styles.commentTitle}>Comentários</h1>
+                            {
+                                data.ratings.map((rating: any) => (
+                                    <div className={styles.commentCard}>
+                                        <div className={styles.commentInfos}>
+                                            <label>{rating.user.username}</label>
+                                            <label className={styles.valueR}>({rating.value}) / 5 Recomendação</label>
+                                        </div>
+                                        <br />
+                                        <div className={styles.commentBox}>
+                                            <label>{rating.coment}</label>
+                                        </div>
+                                    </div>
+
+
+                                ))
+                            }
                         </div>
 
                     </div>
