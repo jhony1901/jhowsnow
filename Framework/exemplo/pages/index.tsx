@@ -12,6 +12,10 @@ export default function Home() {
 
   //constante para armazenar filme
   const [data, setData]: any = useState(undefined);
+  const [ saveData , setSaveData]: Array<any> = useState(undefined)
+
+  const[ name , setName] = useState("");
+
 
   // funcao para receber os dados dos filmes
   async function fetchData() {
@@ -24,6 +28,7 @@ export default function Home() {
 
       console.log(responseJson.data);
       setData(responseJson.data);
+      setSaveData(responseJson.data);
 
     }
     catch (err) {
@@ -46,13 +51,37 @@ export default function Home() {
     router.reload();
   }
 
+  function handleNameEdit(event:any){
+    setName(event.target.value)
+  }
+
+  function searchFilter(array:any , text:string) {
+    if ( text= '') {
+      return array;
+    }
+    else{
+      return array.filter( (el:any) => el.name.tolowerCase().includes(text))
+    }
+  }
+
+  function formSubmit(e:any){
+    e.preventDefault();
+
+    const filteredArray = searchFilter(saveData , name);
+
+    setData(filteredArray);
+  }
+
 
   return (
 
     <main className='flex min-h-screen flex-col'>
       <nav className={styles.navbar}>
         <img className={styles.icon} src="/cinemaicon.jfif" alt="" />
-        <input className={styles.searchBar} type="text" />
+        <form onSubmit={formSubmit}>
+            <input className={styles.searchBar} type="text" onChange={handleNameEdit}/>
+            <input type="submit" />
+        </form>
 
         <div>
           <Link className={styles.Criar} href={'/movie/create'} >Criar Filme </Link>
